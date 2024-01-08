@@ -74,6 +74,14 @@ let maplocalleader=" "
 
 
 
+" ------------------------------------------------------------------------
+"  Fontzoom de Neovide
+" ------------------------------------------------------------------------
+if exists("g:neovide")
+  lua vim.api.nvim_set_keymap("n", "<leader>+", ":lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor + 0.2<CR>", { silent = false })
+  lua vim.api.nvim_set_keymap("n", "<leader>-", ":lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor - 0.2<CR>", { silent = false })
+  lua vim.api.nvim_set_keymap("n", "<leader>0", ":lua vim.g.neovide_scale_factor = 1<CR>", { silent = false })
+endif
 
 
 
@@ -132,86 +140,3 @@ call plug#end()
 
 
 
-" ------------------------------------------------------------------------
-"  Plugin:Airline (ojo, necesitas una "patched font" para que mole)
-" ------------------------------------------------------------------------
-let g:airline_powerline_fonts=1  "(estos simbolitos no funcionan en la shell)
-let g:airline#extensions#branch#enabled = 1
-let g:airline#extensions#tabline#enabled = 1
-
-
-
-
-" ------------------------------------------------------------------------
-"  Colorscheme
-" ------------------------------------------------------------------------
-" if has("gui_running")
-  " colorscheme tchaba
-" endif
-
-
-
-
-
-
-
-" ------------------------------------------------------------------------
-"  Plugin:NerdTree
-" ------------------------------------------------------------------------
-map <leader>n :NERDTreeToggle<CR>
-map <leader>N :NERDTreeFind<CR>
-let NERDTreeMinimalUI = 1
-let NERDTreeDirArrows = 1
-
-
-
-
-
-
-
-
-
-" ------------------------------------------------------------------------
-"  Fontzoom de Neovide
-" ------------------------------------------------------------------------
-if exists("g:neovide")
-  lua vim.api.nvim_set_keymap("n", "<leader>+", ":lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor + 0.2<CR>", { silent = false })
-  lua vim.api.nvim_set_keymap("n", "<leader>-", ":lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor - 0.2<CR>", { silent = false })
-  lua vim.api.nvim_set_keymap("n", "<leader>0", ":lua vim.g.neovide_scale_factor = 1<CR>", { silent = false })
-endif
-
-
-
-
-" ------------------------------------------------------------------------
-"  Plugin: Todo.txt-vim
-" ------------------------------------------------------------------------
-" activar el autocompletado de proyectos y contextos
-au filetype todo setlocal omnifunc=todo#Complete
-" Auto completar proyectos
-au filetype todo imap <buffer> + +<C-X><C-O>
-" Auto completar contextos
-au filetype todo imap <buffer> @ @<C-X><C-O>
-
-
-
-
-" ------------------------------------------------------------------------
-"  Plugin: vimwiki
-" ------------------------------------------------------------------------
-let g:vimwiki_list = [{
-   \ 'path':'~\notas', 
-   \ 'syntax':'markdown', 
-   \ 'ext': '.md',
-\}]
-let g:vimwiki_global_ext = 0
-let g:vimwiki_markdown_link_ext = 1
-let g:vimwiki_url_maxsave=0
-
-
-
-
-" ------------------------------------------------------------------------
-"  Plugin: Fugitive (Git)
-" ------------------------------------------------------------------------
-" command! GCP execute ':Git commit -m "cambios de ' .. strftime('%Y-%m-%d') ..'" | Git push'
