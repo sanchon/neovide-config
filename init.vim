@@ -111,6 +111,7 @@ command! -nargs=+ FILE e ftp://mvse1/'<args>'
 "--------------------------------------------------------------------------
 "
 call plug#begin()
+Plug 'ouuan/vim-plug-config'
 Plug 'sanchon/misChuletas'
 Plug 'vim-airline/vim-airline'
 Plug 'tomtom/tcomment_vim'
@@ -213,4 +214,4 @@ let g:vimwiki_url_maxsave=0
 " ------------------------------------------------------------------------
 "  Plugin: Fugitive (Git)
 " ------------------------------------------------------------------------
-command! GCP execute ':Git commit -m "cambios de ' .. strftime('%Y-%m-%d') ..'" | Git push'
+" command! GCP execute ':Git commit -m "cambios de ' .. strftime('%Y-%m-%d') ..'" | Git push'
