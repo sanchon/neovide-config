@@ -69,12 +69,14 @@ if has("win32")                                  "en Windows... copy-paste con c
     " endif
 endif
 
+
+"  El espacio es el leader
+" ------------------------------------------------------------------------
 let mapleader=" "
 let maplocalleader=" "
 
 
 
-" ------------------------------------------------------------------------
 "  Fontzoom de Neovide
 " ------------------------------------------------------------------------
 if exists("g:neovide")
