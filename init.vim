@@ -117,8 +117,7 @@ command! -nargs=+ FILE e ftp://mvse1/'<args>'
 
 
 
-command! SqlIn %s/\s\+$// | %s/.*/'&'/ | %s/\n/,/g | %s/,$// | yy
-
+command! SqlIn %s/\s\+$// | %s/.*/'&'/ | %s/\n/,/g | %s/,$// | normal! yy
 
 
 "--------------------------------------------------------------------------
