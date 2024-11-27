@@ -94,15 +94,15 @@ endif
 "--------------------------------------------------------------------------
 " FTP AL HOST
 "
-" para hacer FTP lo lógico es esto:
-let g:netrw_ftpmode="ascii"
+" " para hacer FTP lo lógico es esto:
+" let g:netrw_ftpmode="ascii"
 "
 " usuario y password de ftp en fichero aparte, en windows. En otros sistemas
 " mejor usar .netrc
-let g:netrw_ftp_cmd= "ftp -s:" . $HOME . "\\MACHINE.ftp"
+let g:netrw_ftp_cmd= "ftp -v -s:" . $HOME . "\\MACHINE.ftp"
 " al hacer logon con el fichero salen mensajes en la ventana de mensajes... me
 " la cargo:
-" let g:netrw_use_errorwindow =0
+let g:netrw_use_errorwindow=0
 " 
 " FTPs al host: así me ahorro el mvsp1 y las comillas al inicio y al final:
 command! -nargs=+ Host e ftp://mvsp1/\'<args>\'
@@ -113,6 +113,11 @@ command! -nargs=+ JCLD e ftp://mvsp1/'sys1.cage.jcllib(<args>)' | setlocal filet
 command! -nargs=+ FILE e ftp://mvse1/'<args>'
 "--------------------------------------------------------------------------
 
+
+
+
+
+command! SqlIn %s/\s\+$// | %s/.*/'&'/ | %s/\n/,/g | %s/,$// | yy
 
 
 
