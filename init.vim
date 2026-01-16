@@ -2,7 +2,7 @@
 "--------------------------------------------------------------------------
 " aspecto
 "--------------------------------------------------------------------------
-set guifont=Fira\ Code:h9
+set guifont=Fira\ Code:h11
 set relativenumber
 set listchars=tab:→\ ,trail:·,precedes:«,extends:»,eol:¶,space:·
 set foldmethod=syntax
