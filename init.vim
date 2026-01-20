@@ -115,7 +115,9 @@ command! -nargs=+ FILE e ftp://mvse1/'<args>'
 "--------------------------------------------------------------------------
 
 
-
+"Calculadora
+" Evaluar expresión seleccionada y guardarla en el registro "a
+vnoremap <Leader>c y:let @a = eval(getreg('"'))<CR>:echo "Resultado guardado en @a: " . @a<CR>
 
 
 command! SqlIn %s/\s\+$// | %s/.*/'&'/ | %s/\n/,/g | %s/,$// | normal! yy
