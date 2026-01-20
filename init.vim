@@ -115,14 +115,22 @@ command! -nargs=+ FILE e ftp://mvse1/'<args>'
 "--------------------------------------------------------------------------
 
 
+"--------------------------------------------------------------------------
 "Calculadora:
 "Evaluar expresión seleccionada y guardarla en el registro "a
-vnoremap <Leader>c y:let @a = eval(getreg('"'))<CR>:echo "Resultado guardado en @a: " . @a<CR>
+"vnoremap <Leader>c y:let @a = eval(getreg('"'))<CR>:echo "Resultado guardado en @a: " . @a<CR>
+vnoremap <Leader>c y:let @a = eval(substitute(@", '[\n\r\t ]', '', 'g')) <bar> redraw <bar> echo "Resultado en @a: " . @a<CR>
+"--------------------------------------------------------------------------
 
+
+
+
+
+"--------------------------------------------------------------------------
 "prefijarle a una lista de valores comilla simple y sufijarle comilla simple y
 "coma
 command! SqlIn %s/\s\+$// | %s/.*/'&'/ | %s/\n/,/g | %s/,$// | normal! yy
-
+"--------------------------------------------------------------------------
 
 "--------------------------------------------------------------------------
 " PLUGINS
