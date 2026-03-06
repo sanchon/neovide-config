@@ -166,6 +166,7 @@ Plug 'hrsh7th/cmp-cmdline'      " Para el modo comando (:)
 " Motor de snippets (obligatorio para nvim-cmp)
 Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
+Plug 'onsails/lspkind.nvim'
 call plug#end()
 
 
@@ -173,10 +174,9 @@ call plug#end()
 
 colorscheme OceanicNext
 
-
-
 lua << EOF
 local cmp = require'cmp'
+local lspkind = require'lspkind'
 
 cmp.setup({
   snippet = {
@@ -199,15 +199,31 @@ cmp.setup({
       end
     end, { "i", "s" }),
   }),
+  formatting = {
+    format = lspkind.cmp_format({
+      mode = 'symbol_text', -- Muestra el icono y el nombre (Variable, Function, etc.)
+      maxwidth = 50,         -- Evita que el menú sea demasiado ancho
+      ellipsis_char = '...', -- Si el nombre es muy largo, pone puntos suspensivos
+      before = function (entry, vim_item)
+        -- Aquí puedes personalizar el nombre de la fuente (LSP, Buffer, etc.)
+        vim_item.menu = ({
+          buffer = "[Buf]",
+          nvim_lsp = "[LSP]",
+          luasnip = "[Snip]",
+          path = "[Path]",
+        })[entry.source.name]
+        return vim_item
+      end
+    })
+  },
   sources = cmp.config.sources({
-    { name = 'nvim_lsp' }, -- Si usas servidores de lenguaje
-    { name = 'luasnip' },  -- Snippets
+    { name = 'nvim_lsp' },
+    { name = 'luasnip' },
   }, {
-    { name = 'buffer' },   -- Palabras en el texto actual
-    { name = 'path' },     -- Rutas
+    { name = 'buffer' },
+    { name = 'path' },
   })
 })
-
 -- Configuración para búsqueda con '/' (opcional pero genial)
 cmp.setup.cmdline('/', {
   mapping = cmp.mapping.preset.cmdline(),
@@ -226,3 +242,5 @@ cmp.setup.cmdline(':', {
   })
 })
 EOF
+
+
