@@ -157,7 +157,3 @@ Plug 'nvim-tree/nvim-tree.lua'
 Plug 'nvim-tree/nvim-web-devicons'
 call plug#end()
 
-lua << EOF
-require("config_nvim-tree")
-EOF
-nnoremap <Leader>n :NvimTreeToggle<CR>
