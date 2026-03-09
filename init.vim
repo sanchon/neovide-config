@@ -4,7 +4,7 @@
 "--------------------------------------------------------------------------
 set guifont=Fira\ Code:h11
 set relativenumber
-set listchars=tab:→\ ,trail:·,precedes:«,extends:»,eol:¶,space:·
+set listchars=tab:→\ ,trail:·,precedes:«,extends:»,eol:¶,space:· 
 set foldmethod=syntax
 set nofoldenable
 set nowrap
@@ -152,6 +152,7 @@ Plug 'flazz/vim-colorschemes'
 Plug 'airblade/vim-gitgutter'
 Plug 'dbeniamine/todo.txt-vim'
 Plug 'vimwiki/vimwiki'
+Plug 'ouuan/vim-plug-config'
 Plug 'nvim-tree/nvim-tree.lua'
 Plug 'nvim-tree/nvim-web-devicons'
 call plug#end()
