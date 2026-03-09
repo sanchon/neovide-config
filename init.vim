@@ -142,10 +142,9 @@ command! SqlIn %s/\s\+$// | %s/.*/'&'/ | %s/\n/,/g | %s/,$// | normal! yy
 call plug#begin()
 Plug 'sanchon/misChuletas'
 Plug 'vim-airline/vim-airline'
-Plug 'tomtom/tcomment_vim'
 Plug 'sanchon/PLI-Tools'
 Plug 'davdai01/jcl.vim'
-Plug 'preservim/nerdtree'
+"Plug 'preservim/nerdtree'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'yegappan/mru'
@@ -153,7 +152,11 @@ Plug 'flazz/vim-colorschemes'
 Plug 'airblade/vim-gitgutter'
 Plug 'dbeniamine/todo.txt-vim'
 Plug 'vimwiki/vimwiki'
+Plug 'nvim-tree/nvim-tree.lua'
+Plug 'nvim-tree/nvim-web-devicons'
 call plug#end()
 
-
-
+lua << EOF
+require("config_nvim-tree")
+EOF
+nnoremap <Leader>n :NvimTreeToggle<CR>
