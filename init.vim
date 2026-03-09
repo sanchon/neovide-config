@@ -140,7 +140,6 @@ command! SqlIn %s/\s\+$// | %s/.*/'&'/ | %s/\n/,/g | %s/,$// | normal! yy
 "--------------------------------------------------------------------------
 "
 call plug#begin()
-Plug 'ouuan/vim-plug-config'
 Plug 'sanchon/misChuletas'
 Plug 'vim-airline/vim-airline'
 Plug 'tomtom/tcomment_vim'
@@ -154,93 +153,7 @@ Plug 'flazz/vim-colorschemes'
 Plug 'airblade/vim-gitgutter'
 Plug 'dbeniamine/todo.txt-vim'
 Plug 'vimwiki/vimwiki'
-Plug 'wfxr/minimap.vim'
-" Autocompletado molón
-Plug 'hrsh7th/nvim-cmp'
-" Fuentes para el autocompletado (de dónde saca las palabras)
-Plug 'hrsh7th/cmp-buffer'       " Palabras en el archivo actual
-Plug 'hrsh7th/cmp-path'         " Rutas de archivos
-Plug 'hrsh7th/cmp-nvim-lsp'     " Si usas LSP (opcional pero recomendado)
-Plug 'hrsh7th/cmp-cmdline'      " Para el modo comando (:)
-
-" Motor de snippets (obligatorio para nvim-cmp)
-Plug 'L3MON4D3/LuaSnip'
-Plug 'saadparwaiz1/cmp_luasnip'
-Plug 'onsails/lspkind.nvim'
 call plug#end()
 
-
-
-
-colorscheme OceanicNext
-
-lua << EOF
-local cmp = require'cmp'
-local lspkind = require'lspkind'
-
-cmp.setup({
-  snippet = {
-    expand = function(args)
-      require('luasnip').lsp_expand(args.body)
-    end,
-  },
-  mapping = cmp.mapping.preset.insert({
-    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<C-Space>'] = cmp.mapping.complete(), -- Abre el menú manualmente
-    ['<C-e>'] = cmp.mapping.abort(),        -- Cierra el menú
-    ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Enter para aceptar
-    -- Navegación con Tab y S-Tab (opcional)
-    ['<Tab>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      else
-        fallback()
-      end
-    end, { "i", "s" }),
-  }),
-  formatting = {
-    format = lspkind.cmp_format({
-      mode = 'symbol_text', -- Muestra el icono y el nombre (Variable, Function, etc.)
-      maxwidth = 50,         -- Evita que el menú sea demasiado ancho
-      ellipsis_char = '...', -- Si el nombre es muy largo, pone puntos suspensivos
-      before = function (entry, vim_item)
-        -- Aquí puedes personalizar el nombre de la fuente (LSP, Buffer, etc.)
-        vim_item.menu = ({
-          buffer = "[Buf]",
-          nvim_lsp = "[LSP]",
-          luasnip = "[Snip]",
-          path = "[Path]",
-        })[entry.source.name]
-        return vim_item
-      end
-    })
-  },
-  sources = cmp.config.sources({
-    { name = 'nvim_lsp' },
-    { name = 'luasnip' },
-  }, {
-    { name = 'buffer' },
-    { name = 'path' },
-  })
-})
--- Configuración para búsqueda con '/' (opcional pero genial)
-cmp.setup.cmdline('/', {
-  mapping = cmp.mapping.preset.cmdline(),
-  sources = {
-    { name = 'buffer' }
-  }
-})
-
--- Configuración para la línea de comandos ':'
-cmp.setup.cmdline(':', {
-  mapping = cmp.mapping.preset.cmdline(),
-  sources = cmp.config.sources({
-    { name = 'path' }
-  }, {
-    { name = 'cmdline' }
-  })
-})
-EOF
 
 
