@@ -84,8 +84,8 @@ let maplocalleader=" "
 "  Fontzoom de Neovide
 " ------------------------------------------------------------------------
 if exists("g:neovide")
-  lua vim.api.nvim_set_keymap("n", "<leader>+", ":lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor + 0.2<CR>", { silent = false })
-  lua vim.api.nvim_set_keymap("n", "<leader>-", ":lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor - 0.2<CR>", { silent = false })
+  lua vim.api.nvim_set_keymap("n", "<leader>+", ":lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor + 0.1<CR>", { silent = false })
+  lua vim.api.nvim_set_keymap("n", "<leader>-", ":lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor - 0.1<CR>", { silent = false })
   lua vim.api.nvim_set_keymap("n", "<leader>0", ":lua vim.g.neovide_scale_factor = 1<CR>", { silent = false })
 endif
 

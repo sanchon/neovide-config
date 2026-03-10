@@ -1,0 +1,17 @@
+{
+  "PLI-Tools": { "branch": "master", "commit": "a01ba637b3ebb8c4f305bfa346bac58af87c9db3" },
+  "jcl.vim": { "branch": "master", "commit": "923d293d92ce58f5be0edc9c53e7be797bf73807" },
+  "lazy.nvim": { "branch": "main", "commit": "306a05526ada86a7b30af95c5cc81ffba93fef97" },
+  "misChuletas": { "branch": "master", "commit": "146ac9e8d405d89aa7e7918ff087e5f1c2c2f692" },
+  "mru": { "branch": "master", "commit": "dcba22de1201523acda1e1a60d6fc3d9d7b6a519" },
+  "nvim-tree.lua": { "branch": "master", "commit": "4b30847c91d498446cb8440c03031359b045e050" },
+  "nvim-web-devicons": { "branch": "master", "commit": "737cf6c657898d0c697311d79d361288a1343d50" },
+  "todo.txt-vim": { "branch": "master", "commit": "9bff4b6bf1bd5c8911f8adf115823408fb96265b" },
+  "vim-airline": { "branch": "master", "commit": "4ab7c731fe64672412fbe0723831928785c84931" },
+  "vim-colorschemes": { "branch": "master", "commit": "fd8f122cef604330c96a6a6e434682dbdfb878c9" },
+  "vim-fugitive": { "branch": "master", "commit": "3b753cf8c6a4dcde6edee8827d464ba9b8c4a6f0" },
+  "vim-gitgutter": { "branch": "main", "commit": "0acb772e76064cc406664ab595b58b3fac76488a" },
+  "vim-plug-config": { "branch": "master", "commit": "80e14ef201a09cbf8c721009dacbcfa71d1fa2c2" },
+  "vim-rhubarb": { "branch": "master", "commit": "5496d7c94581c4c9ad7430357449bb57fc59f501" },
+  "vimwiki": { "branch": "dev", "commit": "72792615e739d0eb54a9c8f7e0a46a6e2407c9e8" }
+}

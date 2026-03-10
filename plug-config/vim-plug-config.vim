@@ -1,1 +1,0 @@
-nnoremap gpce :PlugConfigEditUnderCursor<CR>
