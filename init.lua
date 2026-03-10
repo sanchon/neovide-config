@@ -43,6 +43,18 @@ vim.opt.smartcase = true
 vim.opt.autochdir = true
 vim.opt.clipboard = "unnamed"
 
+-- Autocompletado de comandos (cmdline) ---------------------------------------
+-- Menú de completado para :commands / rutas
+vim.opt.wildmenu = true
+vim.opt.wildmode = { "longest:full", "full" }
+vim.opt.wildoptions = { "pum" } -- popup menu en cmdline
+vim.opt.wildignorecase = true
+vim.opt.pumheight = 15
+
+-- Mejor UX de completado en insert/cmdline (lo usa también nvim-cmp)
+vim.opt.completeopt = { "menuone", "noselect" }
+vim.opt.shortmess:append("c")
+
 -- Gestión de buffers / teclas de función ------------------------------------
 vim.opt.hidden = true
 
