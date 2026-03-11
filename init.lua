@@ -77,12 +77,31 @@ vim.cmd([[
   command! -nargs=+ Host  e ftp://mvsp1/\'<args>\'
   command! -nargs=+ PLI   e ftp://mvsp1/'sys1.cage.fuentes(<args>)' | setlocal filetype=pli
   command! -nargs=+ INC   e ftp://mvsp1/'cage.maclib(<args>)'      | setlocal filetype=pli
-  command! -nargs=+ JCL   e ftp://mvsp1/'sys1.cage.jcllib(<args>)' | setlocal filetype=jcl
-  command! -nargs=+ JCLD  e ftp://mvsp1/'sys1.cage.jcllib(<args>)' | setlocal filetype=sh
+  "command! -nargs=+ JCL   e ftp://mvsp1/'sys1.cage.jcllib(<args>)' | setlocal filetype=jcl
+  "command! -nargs=+ JCLD  e ftp://mvsp1/'sys1.cage.jcllib(<args>)' | setlocal filetype=sh
   command! -nargs=+ FILE  e ftp://mvse1/'<args>'
   vnoremap <Leader>c y:let @a = eval(substitute(@", '[\n\r\t ]', '', 'g')) <bar> redraw <bar> echo "Resultado en @a: " . @a<CR>
   command! SqlIn %s/\s\+$// | %s/.*/'&'/ | %s/\n/,/g | %s/,$// | normal! yy
 ]])
+
+-- Nuevo comando JCL inteligente (Reemplaza a JCL y JCLD)
+vim.api.nvim_create_user_command('JCL', function(opts)
+  -- 1. Construir la ruta y abrir el archivo
+  local filepath = "ftp://mvsp1/'sys1.cage.jcllib(" .. opts.args .. ")'"
+  vim.cmd("edit " .. filepath)
+
+  -- 2. Obtener la primera línea de forma segura
+  local first_line = vim.fn.getline(1)
+
+  -- 3. Analizar la primera línea (Shebang) asegurándonos de que es un string
+  if type(first_line) == "string" and (first_line:match("^#!.*sh") or first_line:match("^#!.*bash")) then
+    vim.bo.filetype = "sh"
+    print("Detectado bash, aplicando filetype sh")
+  else
+    vim.bo.filetype = "jcl"
+  end
+end, { nargs = '+' })
+
 
 -- Lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
