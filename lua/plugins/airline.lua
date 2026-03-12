@@ -13,6 +13,7 @@ return {
     -- (Opcional) Mostrar los buffers abiertos en la parte superior
     vim.g['airline#extensions#tabline#enabled'] = 1
     vim.g["airline#extensions#branch#enabled"] = 1
+    vim.g.airline_theme='catppuccin'
   end,
 }
 
