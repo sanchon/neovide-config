@@ -114,3 +114,24 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({ { import = "plugins" } })
+
+-- -------------------------------
+--Diagnostic Hover
+-- -------------------------------
+-- 1. Reducir el tiempo de espera
+-- Por defecto, Neovim espera 4 segundos (4000ms) antes de considerar que el cursor 
+-- está "quieto". Lo bajamos a 250ms para que la ventana se sienta instantánea.
+vim.opt.updatetime = 250
+
+-- 2. Crear el evento automático
+-- Creamos un "grupo" para evitar que el evento se duplique si recargas la configuración
+local diagnostic_group = vim.api.nvim_create_augroup("DiagnosticHover", { clear = true })
+
+vim.api.nvim_create_autocmd("CursorHold", {
+  group = diagnostic_group,
+  callback = function()
+    -- Abre la ventana flotante del diagnóstico
+    -- focus = false evita que tu cursor salte dentro de la ventanita por accidente
+    vim.diagnostic.open_float(nil, { focus = false })
+  end,
+})
