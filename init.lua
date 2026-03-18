@@ -2,6 +2,7 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+
 -- Opciones: aspecto
 vim.opt.guifont = "Fira Code:h11"
 vim.opt.relativenumber = true

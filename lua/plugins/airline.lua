@@ -1,19 +1,25 @@
 return {
-  "vim-airline/vim-airline",
+  "nvim-lualine/lualine.nvim",
   dependencies = {
-    "vim-airline/vim-airline-themes", -- Opcional, pero muy recomendado para cambiar estilos
+    "nvim-tree/nvim-web-devicons",
+    "catppuccin"
   },
-  init = function()
-    -- Habilita el uso de fuentes Powerline
-    vim.g.airline_powerline_fonts = 1
-
-    -- (Opcional) Aquí puedes definir el tema que prefieras
-    -- vim.g.airline_theme = 'dark'
-    
-    -- (Opcional) Mostrar los buffers abiertos en la parte superior
-    vim.g['airline#extensions#tabline#enabled'] = 1
-    vim.g["airline#extensions#branch#enabled"] = 1
-    vim.g.airline_theme='catppuccin'
+  config = function()
+    require("lualine").setup({
+      options = {
+        icons_enabled = true
+      },
+      sections = {
+        lualine_b = { 'branch', 'diff', 'diagnostics' },
+      },
+      tabline = {
+        lualine_a = { 'buffers' },
+        lualine_b = {},
+        lualine_c = {},
+        lualine_x = {},
+        lualine_y = {},
+        lualine_z = { 'tabs' }
+      }
+    })
   end,
 }
-
