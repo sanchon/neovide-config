@@ -73,6 +73,7 @@ end
 
 -- Terminal: salir con esc
 vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]], {noremap = true})
+vim.keymap.set('t', '<C-v>', [[<C-\><C-n>"*pa]], { noremap = true })
 
 -- FTP (netrw) y comandos personalizados
 vim.g.netrw_ftp_cmd = "ftp -v -s:" .. vim.fn.expand("$HOME") .. "\\MACHINE.ftp"
