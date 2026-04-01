@@ -66,7 +66,19 @@ return {
     vim.lsp.enable("pyright")
 
 
-
+    -- ==========================================
+    -- 4. CONFIGURACIÓN PARA MARKDOWN
+    -- ==========================================
+    vim.lsp.config.marksman = {
+      -- El comando para iniciar el servidor
+      cmd = { "marksman", "server" },
+      -- Se activará cuando abras archivos .md
+      filetypes = { "markdown", "markdown.mdx" },
+      -- Define la raíz del proyecto (útil si tienes una carpeta de notas conectadas)
+      root_markers = { ".git", ".marksman.toml" },
+    }
+    -- Habilitamos el servidor de Markdown
+    vim.lsp.enable("marksman")
 
 
 

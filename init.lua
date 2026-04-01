@@ -71,6 +71,9 @@ if vim.fn.has("win32") == 1 then
   map("v", "<C-c>", '"*y', { noremap = true })
 end
 
+-- Terminal: salir con esc
+vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]], {noremap = true})
+
 -- FTP (netrw) y comandos personalizados
 vim.g.netrw_ftp_cmd = "ftp -v -s:" .. vim.fn.expand("$HOME") .. "\\MACHINE.ftp"
 vim.g.netrw_use_errorwindow = 0
